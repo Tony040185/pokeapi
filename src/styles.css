@@ -24,7 +24,7 @@ a:hover {
 
 body {
   margin: 0;
- 
+
   min-width: 100vw;
   min-height: 100vh;
 }
@@ -68,17 +68,17 @@ button:focus-visible {
 
 .menu {
   display: flex;
-  background-color: #1a1a1a;
-   
-  gap: 15px;  
+  background-color: #796eeb;
+
+  gap: 15px;
 }
 
-.menu a{
+.menu a {
   text-decoration: none;
-  color: white;  
-  padding: 5px 5px; 
+  color: white;
+  padding: 5px 5px;
 }
 
-.menu a:hover{
-  background-color: #636363;
+.menu a:hover {
+  background-color: #d26060;
 }

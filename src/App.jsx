@@ -1,43 +1,84 @@
 import { Routes, Route, Link } from "react-router-dom";
-import { Electric } from "./components/Electric";
-import { Water } from "./components/Water";
-import { Grass } from "./components/Grass";
-import { Fire } from "./components/Fire";
+import { Electric } from "./pages/Electric";
+import { Water } from "./pages/Water";
+import { Grass } from "./pages/Grass";
+import { Fire } from "./pages/Fire";
 import { useState } from "react";
-import { PokeWorld } from "./components/PokeWorld";
-
-
+import { HomePage } from "./pages/HomePage";
 
 export const App = () => {
-
-  const [pokemon, setPokemon] = useState({})
-  
+  const [pokemon, setPokemon] = useState({});
+  const [typePokemon, setTypePokemon] = useState(2);
 
   const pokemonLoaded = (data) => {
-    setPokemon(data)    
-  }
-  
+    setPokemon(data);
+  };
 
+  const handleTypePokemon = (idType) => {
+    setTypePokemon(idType);
+  };
+  console.log(pokemon);
   return (
-
     <>
-      <PokeWorld pokemonLoaded={pokemonLoaded}/>
       <h1>Pokemon</h1>
       <nav className="menu">
-        <Link to="/fire">Fire</Link>
-        <Link to="/water">Water</Link>
-        <Link to="/grass">Grass</Link>
-        <Link to="/electric">Electric</Link>
+        <Link to="/fire" onClick={() => handleTypePokemon(10)}>
+          Fire
+        </Link>
+        <Link to="/water" onClick={() => handleTypePokemon(11)}>
+          Water
+        </Link>
+        <Link to="/grass" onClick={() => handleTypePokemon(12)}>
+          Grass
+        </Link>
+        <Link to="/electric" onClick={() => handleTypePokemon(13)}>
+          Electric
+        </Link>
       </nav>
-      
+
       <Routes>
-        <Route path="/fire" element={< Fire fire={10} />} />
-        <Route path="/water" element={< Water water={11}/>} />
-        <Route path="/grass" element={< Grass grass={12}/>} />
-        <Route path="/electric" element={< Electric electric={13}/>} />        
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/fire"
+          element={
+            <Fire
+              fire={10}
+              pokemonLoaded={pokemonLoaded}
+              typePokemon={typePokemon}
+            />
+          }
+        />
+        <Route
+          path="/water"
+          element={
+            <Water
+              water={11}
+              pokemonLoaded={pokemonLoaded}
+              typePokemon={typePokemon}
+            />
+          }
+        />
+        <Route
+          path="/grass"
+          element={
+            <Grass
+              grass={12}
+              pokemonLoaded={pokemonLoaded}
+              typePokemon={typePokemon}
+            />
+          }
+        />
+        <Route
+          path="/electric"
+          element={
+            <Electric
+              electric={13}
+              pokemonLoaded={pokemonLoaded}
+              typePokemon={typePokemon}
+            />
+          }
+        />
       </Routes>
     </>
-  )
-}
-
-
+  );
+};
